@@ -17,5 +17,5 @@ export function createOrLoadAccount(id: Address): Account {
 
   account.save()
 
-  return account!
+  return account
 }

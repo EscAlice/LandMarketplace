@@ -35,7 +35,8 @@ export function handleCreateEstate(event: CreateEstate): void {
 
     let nft = new NFT(id)
     nft.name = estateData.name
-    nft.searchText = toLowerCase(estateData.name)
+    let tempStr: string = estateData.name as string
+    nft.searchText = toLowerCase(tempStr)
     nft.createdAt = event.block.timestamp
     nft.updatedAt = event.block.timestamp
     nft.soldAt = null
@@ -57,8 +58,14 @@ export function handleAddLand(event: AddLand): void {
   let parcelId = getNFTId(categories.PARCEL, addresses.LANDRegistry, landId)
 
   let estate = Estate.load(id)
+  if (estate == null) {
+    return
+  }
 
   let parcels = estate.parcels
+  if (parcels == null) {
+    return
+  }
   parcels.push(parcelId)
 
   estate.parcels = parcels
@@ -67,6 +74,9 @@ export function handleAddLand(event: AddLand): void {
   estate.save()
 
   let estateNFT = NFT.load(id)
+  if (estateNFT == null) {
+    return
+  }
   estateNFT.searchEstateSize = parcels.length
   estateNFT.save()
 
@@ -100,8 +110,14 @@ export function handleRemoveLand(event: RemoveLand): void {
   let parcelId = getNFTId(categories.PARCEL, addresses.LANDRegistry, landId)
 
   let estate = Estate.load(id)
+  if (estate == null) {
+    return
+  }
 
   let parcels = estate.parcels
+  if (parcels == null) {
+    return
+  }
   let index = parcels.indexOf(parcelId)
   parcels.splice(index, 1)
 
@@ -111,6 +127,9 @@ export function handleRemoveLand(event: RemoveLand): void {
   estate.save()
 
   let estateNFT = NFT.load(id)
+  if (estateNFT == null) {
+    return
+  }
   estateNFT.searchEstateSize = parcels.length
   estateNFT.save()
 

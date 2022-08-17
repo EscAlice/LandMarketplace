@@ -78,7 +78,7 @@ export function handleTransfer(event: Transfer): void {
   } else {
     let oldNFT = NFT.load(id)
     if (cancelActiveOrder(oldNFT!, event.block.timestamp)) {
-      nft = clearNFTOrderProperties(nft!)
+      nft = clearNFTOrderProperties(nft)
     }
   }
 

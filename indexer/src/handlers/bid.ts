@@ -64,7 +64,8 @@ export function handleBidAccepted(event: BidAccepted): void {
   if (bid == null) {
     return
   }
-  let nft = NFT.load(bid.nft)
+  let nftId:string = bid.nft as string
+  let nft = NFT.load(nftId)
   if (nft == null) {
     return
   }
@@ -102,7 +103,8 @@ export function handleBidCancelled(event: BidCancelled): void {
   if (bid == null) {
     return
   }
-  let nft = NFT.load(bid.nft)
+  let nftId:string = bid.nft as string
+  let nft = NFT.load(nftId)
   if (nft == null) {
     return
   }

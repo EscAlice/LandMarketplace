@@ -14,8 +14,8 @@
     "deploy:goerli": "ts-node ./scripts/buildData.ts --network goerli && ts-node ./scripts/deploy.ts --network goerli"
   },
   "devDependencies": {
-    "@graphprotocol/graph-cli": "^0.21.1",
-    "@graphprotocol/graph-ts": "^0.19.0",
+    "@graphprotocol/graph-cli": "0.33.0",
+    "@graphprotocol/graph-ts": "0.27.0",
     "ts-node": "^8.5.4",
     "typescript": "^3.7.4"
   },

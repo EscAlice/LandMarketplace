@@ -16,7 +16,19 @@ enum ContractName {
   MarketplaceProxy = 'MarketplaceProxy',
   DCLRegistrar = 'DCLRegistrar'
 }
-type ContractsResponse = Record<Network, Record<ContractName, string>>
+// type ContractsResponse = Record<Network, Record<ContractName, string>>
+
+const contractsByNetwork = {
+  [Network.ROPSTEN]: {
+    MANAToken : "0xe40795abd10e724c09c5129484461af2aae776c4",
+    LANDProxy: "0xbb265dcc3781f241b586bbbbafe48f0bc140c966",
+    MarketplaceProxy: "0xeaf250ce039ed54c3182c2302f69a89017ab36c8",
+    EstateProxy: "0xcab66b458910ae5b60a35f737d8551cd2dcd0030",
+    ERC721Bid: "0xc732e06d5d3fa1293ccdb7f73cfd6407b3f4f19b",
+    DCLRegistrar: "0xe6f5870b425bbb899676d49dc152cc9f656c6ddb",
+  }
+}
+
 
 const startBlockByNetwork: Record<Network, Record<ContractName, number>> = {
   [Network.MAINNET]: {
@@ -103,9 +115,9 @@ class Ethereum {
   }
 
   async fetchContracts() {
-    const contractsByNetwork: ContractsResponse = await fetch(
-      'https://contracts.decentraland.org/addresses.json'
-    )
+    // const contractsByNetwork: ContractsResponse = await fetch(
+    //   'https://contracts.decentraland.org/addresses.json'
+    // )
     this.contractAddresses = contractsByNetwork[this.network]
   }
 

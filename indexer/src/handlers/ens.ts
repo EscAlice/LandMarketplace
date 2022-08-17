@@ -23,8 +23,11 @@ export function handleNameRegistered(event: NameRegistered): void {
   ens.save()
 
   let nft = NFT.load(id)
+  if (nft == null) {
+    return
+  }
   nft.name = ens.subdomain
-  nft.searchText = toLowerCase(ens.subdomain)
+  nft.searchText = toLowerCase(ens.subdomain!)
   nft.save()
 
   createOrLoadAccount(event.params._caller)

@@ -28,6 +28,9 @@ export function trackSale(
 
   // load entities
   let nft = NFT.load(nftId)
+  if (nft == null) {
+    return
+  }
 
   // save sale
   let saleId = BigInt.fromI32(count.salesTotal).toString()

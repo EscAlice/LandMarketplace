@@ -36,7 +36,7 @@ async function deploy() {
 // Bash -------------------------------------------------------------
 
 async function run(command: string, args: string[], options?: SpawnOptions) {
-  return new Promise((resolve, reject) => {
+  return new Promise<void>((resolve, reject) => {
     const program = spawn(command, args, options)
 
     program.on('close', code =>
