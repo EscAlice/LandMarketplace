@@ -52,7 +52,12 @@ import { getURNNetwork } from '../network'
 
 export function buildWearableFromNFT(nft: NFT): WearableEntity {
   // https://wearable-api.decentraland.org/v2/standards/erc721-metadata/collections/halloween_2019/wearables/funny_skull_mask/1
-  let tokenURI:string = nft.tokenURI as string
+  let tokenURI :string
+  if (nft.tokenURI) {
+    tokenURI = nft.tokenURI!
+  } else {
+    return new WearableEntity('')
+  }
   let wearableId = getWearableIdFromTokenURI(tokenURI)
   if (wearableId == '') {
     log.error('Coud not get a wearable id from tokenURI {} and nft {}', [

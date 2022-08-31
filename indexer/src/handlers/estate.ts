@@ -35,8 +35,13 @@ export function handleCreateEstate(event: CreateEstate): void {
 
     let nft = new NFT(id)
     nft.name = estateData.name
-    let tempStr: string = estateData.name as string
-    nft.searchText = toLowerCase(tempStr)
+    let estateDataName :string
+    if (estateData.name) {
+      estateDataName = estateData.name!
+    } else {
+      return
+    }
+    nft.searchText = toLowerCase(estateDataName)
     nft.createdAt = event.block.timestamp
     nft.updatedAt = event.block.timestamp
     nft.soldAt = null

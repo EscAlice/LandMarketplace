@@ -16,7 +16,7 @@ enum ContractName {
   MarketplaceProxy = 'MarketplaceProxy',
   DCLRegistrar = 'DCLRegistrar'
 }
-// type ContractsResponse = Record<Network, Record<ContractName, string>>
+type ContractsResponse = Record<Network, Record<ContractName, string>>
 
 const contractsByNetwork = {
   [Network.ROPSTEN]: {
@@ -25,8 +25,16 @@ const contractsByNetwork = {
     MarketplaceProxy: "0xeaf250ce039ed54c3182c2302f69a89017ab36c8",
     EstateProxy: "0xcab66b458910ae5b60a35f737d8551cd2dcd0030",
     ERC721Bid: "0xc732e06d5d3fa1293ccdb7f73cfd6407b3f4f19b",
-    DCLRegistrar: "0xe6f5870b425bbb899676d49dc152cc9f656c6ddb",
-  }
+    DCLRegistrar: "0x7d6d05c82c4ec9600afe9fdea422cd9055877914",
+  },
+  [Network.MAINNET]: {
+      MANAToken : "0x0f5d2fb29fb7d3cfee444a200298f468908cc942",
+      LANDProxy: "0xf87e31492faf9a91b02ee0deaad50d51d56d5d4d",
+      MarketplaceProxy: "0x8e5660b4ab70168b5a6feea0e0315cb49c8cd539",
+      EstateProxy: "0x959e104e1a4db6317fa58f8295f586e1a978c297",
+      ERC721Bid: "0xe479dfd9664c693b2e2992300930b00bfde08233",
+      DCLRegistrar: "0x2a187453064356c898cae034eaed119e1663acb8",
+}
 }
 
 

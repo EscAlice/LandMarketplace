@@ -131,8 +131,13 @@ export function handleUpdate(event: Update): void {
 
     let nft = new NFT(id)
     nft.name = parcelData.name
-    let temp: string = parcelData.name as string
-    nft.searchText = getParcelText(parcel, temp)
+    let parcelDataName :string
+    if (parcelData.name) {
+      parcelDataName = parcelData.name!
+    } else {
+      return
+    }
+    nft.searchText = getParcelText(parcel, parcelDataName)
     nft.updatedAt = event.block.timestamp
     nft.save()
   }
